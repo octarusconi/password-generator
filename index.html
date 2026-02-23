@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SecurePass Password Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="head">
+      <h1>SecurePass // Password Generator</h1>
+      <p>Genera contraseñas seguras</p>
+    </header>
+
+    <section class="card">
+      <div class="row">
+        <label for="len">Longitud: <span id="lenVal">16</span></label>
+        <input id="len" type="range" min="6" max="40" value="16" />
+      </div>
+
+      <div class="grid">
+        <label class="check"><input id="lower" type="checkbox" checked /> minúsculas (a-z)</label>
+        <label class="check"><input id="upper" type="checkbox" checked /> mayúsculas (A-Z)</label>
+        <label class="check"><input id="nums" type="checkbox" checked /> números (0-9)</label>
+        <label class="check"><input id="syms" type="checkbox" checked /> símbolos (!@#)</label>
+      </div>
+
+      <div class="out">
+        <div class="password-panel">
+          <span class="panel-kicker">Salida</span>
+          <output id="pwd" aria-live="polite">Presiona Generar para crear una contrasena</output>
+        </div>
+        <button id="copy" class="btn" type="button">Copiar</button>
+        <button id="gen" class="btn primary" type="button">Generar</button>
+      </div>
+
+      <div class="meter">
+        <div class="meta">
+          <span>Fuerza:</span>
+          <strong id="label">—</strong>
+          <span class="dim" id="bits">0 bits</span>
+        </div>
+        <canvas id="meterCanvas" width="900" height="160" aria-hidden="true"></canvas>
+        <p class="small dim">
+          La fuerza se estima por entropía aproximada: log2(tamaño del set^longitud).
+        </p>
+      </div>
+
+      <div id="toast" class="toast" aria-live="polite"></div>
+    </section>
+
+    <footer class="foot dim">
+      Proyecto final — Laboratorio de Computación II<br />
+      Octavio Rusconi — 2026
+    </footer>
+  </main>
+
+  <script src="strength-canvas.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
